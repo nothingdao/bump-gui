@@ -1,0 +1,103 @@
+// prisma/schema.prisma
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id            String         @id
+  walletAddress String         @unique // Solana wallet address
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+  createdBumps  Bump[]         @relation("CreatedBumps")
+  contributions Contribution[] // Track all contributions to various bumps
+}
+
+model Token {
+  id           String    @id @default(uuid())
+  address      String    @unique // Solana token address
+  name         String? // Token name (if available)
+  symbol       String? // Token symbol (if available)
+  decimals     Int? // Token decimals
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+  bumps        Bump[] // All bumps associated with this token
+  // Token market data
+  currentPrice Float?
+  volume24h    Float?
+  marketCap    Float?
+  lastUpdated  DateTime?
+}
+
+model Bump {
+  id            String         @id @default(uuid())
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+  // Relationships
+  creator       User           @relation("CreatedBumps", fields: [creatorId], references: [id])
+  creatorId     String
+  token         Token          @relation(fields: [tokenAddress], references: [address])
+  tokenAddress  String
+  // Bump configuration
+  status        BumpStatus     @default(INACTIVE)
+  buyAmount     Float // Amount in SOL
+  interval      Int // Interval in seconds
+  slippage      Int // Slippage in basis points
+  // Bump wallet details
+  bumpWallet    String // Dedicated bump wallet address
+  // Statistics
+  totalBumps    Int            @default(0)
+  totalVolume   Float          @default(0)
+  lastBumpTime  DateTime?
+  // Contributions tracking
+  contributions Contribution[] // All contributions to this bump
+  // Transaction history
+  transactions  Transaction[]
+}
+
+model Contribution {
+  id          String   @id @default(uuid())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  amount      Float // Amount contributed in SOL
+  // Relationships
+  contributor User     @relation(fields: [userId], references: [id])
+  userId      String
+  bump        Bump     @relation(fields: [bumpId], references: [id])
+  bumpId      String
+}
+
+model Transaction {
+  id        String          @id @default(uuid())
+  createdAt DateTime        @default(now())
+  bump      Bump            @relation(fields: [bumpId], references: [id])
+  bumpId    String
+  type      TransactionType
+  amount    Float // Amount in SOL
+  signature String // Solana transaction signature
+  status    TxStatus        @default(PENDING)
+  error     String? // Error message if failed
+}
+
+enum BumpStatus {
+  ACTIVE
+  INACTIVE
+  PAUSED
+}
+
+enum TransactionType {
+  BUY
+  SELL
+  CONTRIBUTION
+  WITHDRAWAL
+}
+
+enum TxStatus {
+  PENDING
+  CONFIRMED
+  FAILED
+}
