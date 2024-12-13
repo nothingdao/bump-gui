@@ -8,7 +8,7 @@ A web interface for managing automated token bumping on Solana using pump.fun. T
 
 ## Features
 
-- 🔐 Wallet authentication (Phantom, Solflare)
+- 🔐 Wallet authentication (Phantom, Solflare, etc..)
 - 📊 Token analytics and price tracking
 - 🤖 Automated bump creation and management
 - 👥 Multi-user contribution system

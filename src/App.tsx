@@ -11,43 +11,62 @@ import { BumpManagement } from './components/bump/BumpManagement'
 import { UserDashboard } from './components/dashboard/UserDashboard'
 import { RequireAuth } from './components/auth/RequireAuth'
 import { CreateBump } from './components/bump/CreateBump'
+import {
+  Wallet,
+  BarChart2,
+  Bot,
+  Users
+} from 'lucide-react'
 
 const HomePage = () => {
   return (
     <div className="max-w-3xl mx-auto space-y-8">
       {/* Hero Section */}
       <section className="space-y-4">
-        <h1 className="text-3xl font-bold">bump-gui</h1>
-        <p className="text-lg leading-relaxed">
+        <h1 className="text-3xl">bump-gui</h1>
+        <p className="text-md leading-relaxed">
           A general web interface for managing automated token bumping on Solana using pump.fun. Create, monitor, and collaborate on bump operations with an intuitive dashboard.
         </p>
       </section>
 
       {/* Features Section */}
       <section className="space-y-4">
-        <h2 className="text-2xl font-semibold">Features</h2>
+        <h2 className="text-xl">Features</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="card bg-base-200">
             <div className="card-body">
-              <h3 className="card-title text-lg">🔐 Secure Authentication</h3>
-              <p>Connect with Phantom or Solflare wallet to manage your bumps safely</p>
+              <h3 className="card-title text-md">
+                <Wallet className="w-5 h-5" strokeWidth={0.5} />
+                Wallet Auth
+              </h3>
+              <p>Connect with Phantom, Solflare, or whatever wallet to manage your bumps</p>
             </div>
           </div>
           <div className="card bg-base-200">
             <div className="card-body">
-              <h3 className="card-title text-lg">📊 Real-time Analytics</h3>
+              <h3 className="card-title text-md">
+                <BarChart2 className="w-5 h-5" strokeWidth={0.5} />
+                Real-time Analytics
+
+              </h3>
               <p>Track token prices, monitor transactions, and analyze performance</p>
             </div>
           </div>
           <div className="card bg-base-200">
             <div className="card-body">
-              <h3 className="card-title text-lg">🤖 Automated Control</h3>
-              <p>Configure and manage automated bump operations with ease</p>
+              <h3 className="card-title text-md">
+                <Bot className="w-5 h-5" strokeWidth={0.5} />
+                Automated Control
+              </h3>
+              <p>Configure and manage automated bump operations</p>
             </div>
           </div>
           <div className="card bg-base-200">
             <div className="card-body">
-              <h3 className="card-title text-lg">👥 Multi-user Support</h3>
+              <h3 className="card-title text-md">
+                <Users className="w-5 h-5" strokeWidth={0.5} />
+                Multi-user Support
+              </h3>
               <p>Collaborate with others through shared bump contributions</p>
             </div>
           </div>
@@ -57,7 +76,7 @@ const HomePage = () => {
       {/* Get Started Section */}
       <section className="card bg-base-200">
         <div className="card-body">
-          <h2 className="card-title text-xl">Get Started</h2>
+          <h2 className="card-title text-lg">Get Started</h2>
           <p className="mb-4">
             Connect your wallet to start creating and managing bumps. Monitor your operations from a comprehensive dashboard and collaborate with other users.
           </p>
@@ -69,7 +88,7 @@ const HomePage = () => {
 
       {/* How It Works */}
       <section className="space-y-4">
-        <h2 className="text-2xl font-semibold">How It Works</h2>
+        <h2 className="text-xl">How It Works</h2>
         <div className="steps steps-vertical lg:steps-horizontal w-full">
           <div className="step step-primary">Connect Wallet</div>
           <div className="step step-primary">Create Bump</div>
