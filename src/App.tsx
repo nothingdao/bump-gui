@@ -15,44 +15,109 @@ import { CreateBump } from './components/bump/CreateBump'
 const HomePage = () => {
   return (
     <div className="max-w-3xl mx-auto space-y-8">
+      {/* Hero Section */}
       <section className="space-y-4">
         <h1 className="text-3xl font-bold">bump-gui</h1>
-        <p className="text-md">
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officia amet facere dignissimos esse dolor, ipsa eum expedita accusantium enim sapiente a hic fugiat libero? Quos ullam earum magni reiciendis magnam?
+        <p className="text-lg leading-relaxed">
+          A general web interface for managing automated token bumping on Solana using pump.fun. Create, monitor, and collaborate on bump operations with an intuitive dashboard.
         </p>
       </section>
 
-
-
+      {/* Features Section */}
       <section className="space-y-4">
         <h2 className="text-2xl font-semibold">Features</h2>
-        <ul className="list-disc list-inside space-y-2">
-          <li>Feature 1</li>
-          <li>Feature 2</li>
-        </ul>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="card bg-base-200">
+            <div className="card-body">
+              <h3 className="card-title text-lg">🔐 Secure Authentication</h3>
+              <p>Connect with Phantom or Solflare wallet to manage your bumps safely</p>
+            </div>
+          </div>
+          <div className="card bg-base-200">
+            <div className="card-body">
+              <h3 className="card-title text-lg">📊 Real-time Analytics</h3>
+              <p>Track token prices, monitor transactions, and analyze performance</p>
+            </div>
+          </div>
+          <div className="card bg-base-200">
+            <div className="card-body">
+              <h3 className="card-title text-lg">🤖 Automated Control</h3>
+              <p>Configure and manage automated bump operations with ease</p>
+            </div>
+          </div>
+          <div className="card bg-base-200">
+            <div className="card-body">
+              <h3 className="card-title text-lg">👥 Multi-user Support</h3>
+              <p>Collaborate with others through shared bump contributions</p>
+            </div>
+          </div>
+        </div>
       </section>
 
-      <section className="bg-base-200 p-4 rounded-lg">
-        <h2 className="text-xl font-semibold mb-2">Try It Out</h2>
-        <p>
-          Connect your wallet.
-        </p>
+      {/* Get Started Section */}
+      <section className="card bg-base-200">
+        <div className="card-body">
+          <h2 className="card-title text-xl">Get Started</h2>
+          <p className="mb-4">
+            Connect your wallet to start creating and managing bumps. Monitor your operations from a comprehensive dashboard and collaborate with other users.
+          </p>
+          <div className="card-actions">
+            <WalletConnection />
+          </div>
+        </div>
       </section>
 
-      <section className="text-sm text-base-content/70">
+      {/* How It Works */}
+      <section className="space-y-4">
+        <h2 className="text-2xl font-semibold">How It Works</h2>
+        <div className="steps steps-vertical lg:steps-horizontal w-full">
+          <div className="step step-primary">Connect Wallet</div>
+          <div className="step step-primary">Create Bump</div>
+          <div className="step step-primary">Configure Settings</div>
+          <div className="step step-primary">Monitor & Manage</div>
+        </div>
+      </section>
+
+      {/* GitHub Link */}
+      <section className="card bg-base-200">
+        <div className="card-body">
+          <h3 className="card-title">Open Source</h3>
+          <p className="text-base-content/70">
+            This project is open source and available on GitHub. View the code, contribute, or report issues.
+          </p>
+          <div className="card-actions">
+            <a
+              href="https://github.com/nothingdao/bump-gui"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-ghost gap-2"
+            >
+              View on GitHub
+              <ExternalLink className="w-4 h-4" />
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Status Section */}
+      <section className="text-sm text-base-content/70 flex items-center justify-between">
+        <div className="space-x-2">
+          <span className="badge badge-success">mainnet</span>
+          <span className="badge badge-info">in development</span>
+        </div>
         <p>
-          View the full source code and documentation on{' '}
+          Built with ❤️ by{' '}
           <a
-            href="https://github.com/nothingdao/bump-gui"
+            href="https://twitter.com/nothingdao"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1 text-primary hover:underline"
+            className="text-primary hover:underline inline-flex items-center gap-1"
           >
-            GitHub <ExternalLink className="w-3 h-3" />
+            @nothingdao
           </a>
         </p>
       </section>
-    </div>
+    </div >
   )
 }
 
