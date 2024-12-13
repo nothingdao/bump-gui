@@ -1,5 +1,5 @@
 // src/components/WalletContext.tsx
-import React, { FC, useMemo, ReactNode } from 'react'
+import { FC, useMemo, ReactNode } from 'react'
 import { ConnectionProvider, WalletProvider } from '@solana/wallet-adapter-react'
 import { PhantomWalletAdapter, SolflareWalletAdapter } from '@solana/wallet-adapter-wallets'
 import { clusterApiUrl } from '@solana/web3.js'

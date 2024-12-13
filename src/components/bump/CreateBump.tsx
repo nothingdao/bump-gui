@@ -1,7 +1,7 @@
 // src/components/bump/CreateBump.tsx
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useWallet } from '@solana/wallet-adapter-react'
+// import { useWallet } from '@solana/wallet-adapter-react'
 import { PublicKey } from '@solana/web3.js'
 import {
   Search,
@@ -30,7 +30,7 @@ interface BumpConfig {
 
 export const CreateBump: React.FC = () => {
   const navigate = useNavigate()
-  const { publicKey } = useWallet()
+  // const { publicKey } = useWallet()
   const [currentStep, setCurrentStep] = useState<1 | 2>(1)
 
   // Token validation state

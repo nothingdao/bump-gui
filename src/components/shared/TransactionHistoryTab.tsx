@@ -29,7 +29,8 @@ interface TransactionHistoryTabProps {
   address?: string // Token address or bump ID
 }
 
-export const TransactionHistoryTab: React.FC<TransactionHistoryTabProps> = ({ scope, address }) => {
+export const TransactionHistoryTab: React.FC<TransactionHistoryTabProps> = () => {
+
   // State for filters and sorting
   const [filters, setFilters] = useState({
     type: 'all',
